@@ -1,4 +1,4 @@
-"""Estimate the amount of months it would take to save enough for a down payment on a Bay Area house."""
+"""Part A: Estimate the amount of months it would take to save enough for a down payment on a Bay Area house."""
 
 annual_salary = float(input("What is your annual salary?"))
 portion_saved = float(input("Portion to be saved?"))
@@ -19,3 +19,35 @@ while current_savings < portion_down_payment:
     
 print(months)
 print(current_savings)
+
+
+"""Part B: Add on what happens when there is a semi-annual salary increase"""
+
+annual_salary = float(input("What is your annual salary?"))
+portion_saved = float(input("Portion to be saved?"))
+total_cost = float(input("What is the total cost of the house?"))
+semi_annual_raise = float(input("What is the semi-annual salary raise?"))
+
+portion_down_payment = 0.25*total_cost
+
+current_savings = 0.0
+monthly_salary_saved= (portion_saved*annual_salary)/12
+r =0.04
+months = 0.0
+
+while current_savings < portion_down_payment:
+    current_savings = current_savings+ monthly_salary_saved
+    investments = current_savings*r/12
+    current_savings= current_savings+investments
+    months += 1.0
+    if months%6 ==0:
+        new_salary = semi_annual_raise*monthly_salary_saved
+        monthly_salary_saved = monthly_salary_saved + new_salary
+    
+print(months)
+print(current_savings)
+
+
+
+
+
